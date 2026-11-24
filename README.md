@@ -12,6 +12,7 @@ no profile folders to manage by hand.
 ![Harbor's map view in the daytime look, showing two profiles docked in the harbor](docs/day-view.jpg)
 ![Harbor's map view at night, showing two profiles docked in the harbor](docs/map-view.jpg)
 ![Harbor's list view, with a profile's settings open below it](docs/list-view.jpg)
+![Harbor's menu bar dropdown, listing each profile and quick actions](docs/menu-bar.png)
 
 ## Why
 
