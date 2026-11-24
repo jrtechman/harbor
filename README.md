@@ -53,6 +53,21 @@ universal app (Apple silicon and Intel) for macOS 14 or later.
 - "Import…" copies the Code tab's chat list from the regular Claude app into a profile (preview first, undoable).
   Permissions, connector settings and cached prompts are removed from each copy; nothing in the regular app changes.
 
+## Telling profiles apart with icons
+
+Claude Desktop itself has one icon, so every signed-in window looks the same in the Dock. Harbor gives each
+profile a Dock/Spotlight/Launchpad/⌘-Tab icon of its own, two ways:
+
+- **Color badge (default)** — pick one of nine colors for a profile, and its shortcut and standalone app both
+  get Claude's icon with that color badged onto it. Enough to tell "Work" from "Personal" at a glance.
+- **Custom icon** — in a profile's row, "All settings…" lets you drop in your own image (PNG, JPEG, HEIC, or
+  a ready-made `.icns`) instead of the badge, square images work best since macOS masks them into the usual
+  rounded-square shape.
+
+This only applies to a profile's **shortcut app** and **standalone app** — the plain "Show window" view inside
+Harbor still opens Claude's normal, unbadged window (see [Limits](#limits)). Make a shortcut or turn on
+Standalone app for a profile to get its own icon everywhere outside Harbor.
+
 ## How it works
 Claude Desktop is started with `--user-data-dir=<profile folder>`. Profile data lives in
 `~/Library/Application Support/Harbor/Profiles/<id>/Data`. The Claude app itself
@@ -67,6 +82,20 @@ The app is written to `build/Harbor.app` (universal, ad-hoc signed).
 
 ## Limits
 - Every profile's window uses Claude's normal Dock icon (the shortcut apps carry the colored badge).
+
+## Good to know
+
+- **Requirements:** macOS 14 or later, and Claude Desktop already installed from
+  [claude.ai/download](https://claude.ai/download). Harbor never replaces or modifies that app.
+- **Do you need to keep Harbor running?** No — once a profile's window (or standalone app) is open, it keeps
+  working even if you quit Harbor. Quitting only pauses: live status in Harbor's window and menu bar, automatic
+  daily backups, standalone-app update checks, and instant `claude://` link routing (macOS will still relaunch
+  Harbor to handle a link, just a bit slower).
+- **Your history is backed up.** Harbor snapshots your Claude Code sessions and transcripts once a day, and
+  again before anything risky, like deleting a profile. Restore from Settings → Backups.
+- **Uninstalling:** quit Harbor, then trash `/Applications/Harbor.app`. Your Claude accounts themselves aren't
+  touched — to also remove profile data, delete `~/Library/Application Support/Harbor` and, if you made any
+  shortcut or standalone apps, `~/Applications/Harbor Profiles`.
 
 ## Standalone apps: trade-offs
 - Keychain: copies are signed with "Harbor Local Signing" (Harbor's own keychain, nothing added to system trust).
