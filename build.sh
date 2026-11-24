@@ -4,7 +4,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 APP="build/Harbor.app"
-VERSION="1.0.1"
+VERSION="1.0.2"
 rm -rf build && mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources" build/obj
 
 for ARCH in arm64 x86_64; do

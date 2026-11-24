@@ -47,6 +47,7 @@ struct AdvancedSettings: View {
     @Local private var working = false
     @Local private var launchAtLogin = SMAppService.mainApp.status == .enabled
     @Local private var autoUpdate = Prefs.autoUpdateCopies
+    @AppStorage(Prefs.harborAutoUpdateKey) private var autoUpdateHarbor = false
     @AppStorage(Prefs.showMenuBarKey) private var showMenuBar = true
     @AppStorage(Prefs.hideDockKey) private var hideDock = false
     @AppStorage(Prefs.showUsageKey) private var showUsage = true
@@ -101,6 +102,9 @@ struct AdvancedSettings: View {
                     Text("When Claude updates, Harbor rebuilds each standalone app the next time it isn't open. Turn this off to be asked instead.")
                         .font(.caption).foregroundStyle(.secondary)
                     Text("Do you need to keep Harbor running? Once a profile's window is open, it keeps working even if you quit Harbor. Quitting only stops: live status in Harbor's window and menu bar, automatic daily backups and standalone-app update checks, and quick claude:// link routing (macOS will still relaunch Harbor to handle a link, just a bit slower).")
+                        .font(.caption).foregroundStyle(.secondary)
+                    Toggle("Update Harbor itself automatically", isOn: $autoUpdateHarbor)
+                    Text("Harbor checks GitHub for newer releases of itself every few hours. With this on, it downloads and installs them, then relaunches, without asking. With it off (the default), it asks first with a link to the release.")
                         .font(.caption).foregroundStyle(.secondary)
                 }
                 Section("Appearance") {
@@ -231,6 +235,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         Task { @MainActor in
             AppPolicy.apply()
             StandaloneManager.shared.start()
+            HarborUpdater.shared.start()
             if Prefs.usageEnabled { UsageStore.shared.start() }
             BackupManager.shared.start()
         }
@@ -332,6 +337,10 @@ struct MenuBarContent: View {
         Button("Check for Claude Updates…") {
             NSApp.activate(ignoringOtherApps: true)
             StandaloneManager.shared.checkNow()
+        }
+        Button("Check for Harbor Updates…") {
+            NSApp.activate(ignoringOtherApps: true)
+            HarborUpdater.shared.checkNow()
         }
         Button("Quit Harbor") { NSApp.terminate(nil) }.keyboardShortcut("q")
     }

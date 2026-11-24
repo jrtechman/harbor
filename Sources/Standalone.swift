@@ -56,6 +56,12 @@ enum Prefs {
     static var hideDockIcon: Bool {
         UserDefaults.standard.object(forKey: hideDockKey) as? Bool ?? false
     }
+
+    static let harborAutoUpdateKey = "harborAutoUpdate"
+    /// Download and install newer Harbor releases from GitHub automatically. Off by default: ask first.
+    static var harborAutoUpdate: Bool {
+        UserDefaults.standard.bool(forKey: harborAutoUpdateKey)
+    }
 }
 
 /// Shows or hides Harbor's Dock icon. Hidden only when the menu bar icon is on.
