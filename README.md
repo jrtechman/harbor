@@ -9,10 +9,12 @@ Use several Claude accounts on this Mac at the same time. Each profile is its ow
 Claude Desktop window with its own sign-in and chat history — no logging in and out,
 no profile folders to manage by hand.
 
-![Harbor's map view in the daytime look, showing two profiles docked in the harbor](docs/day-view.jpg)
-![Harbor's map view at night, showing two profiles docked in the harbor](docs/map-view.jpg)
-![Harbor's list view, with a profile's settings open below it](docs/list-view.jpg)
-![Harbor's menu bar dropdown, listing each profile and quick actions](docs/menu-bar.png)
+<p align="center">
+  <img src="docs/day-view.jpg" alt="Harbor's map view in the daytime look, showing two profiles docked in the harbor" width="420">
+  <img src="docs/map-view.jpg" alt="Harbor's map view at night, showing two profiles docked in the harbor" width="420">
+  <img src="docs/list-view.jpg" alt="Harbor's list view, with a profile's settings open below it" width="420">
+  <img src="docs/menu-bar.png" alt="Harbor's menu bar dropdown, listing each profile and quick actions" width="200">
+</p>
 
 ## Why
 
