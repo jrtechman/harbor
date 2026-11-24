@@ -1,7 +1,32 @@
 # Harbor
 
 Use several Claude accounts on this Mac at the same time. Each profile is its own
-Claude Desktop window with its own sign-in and chat history.
+Claude Desktop window with its own sign-in and chat history — no logging in and out,
+no profile folders to manage by hand.
+
+![Harbor's map view, showing two profiles in a harbor at night](docs/map-view.jpg)
+![Harbor's list view, with a profile's settings open below it](docs/list-view.jpg)
+
+## Why
+
+Claude Desktop only supports one signed-in account at a time. If you use Claude for
+both work and personal accounts — or run a few side projects under different
+organizations — switching back and forth means signing out and back in every time.
+Harbor runs each account in its own window, side by side, so none of that is
+necessary.
+
+## Download
+
+Grab the latest `.dmg` from the [Releases page](../../releases/latest). It's a
+universal app (Apple silicon and Intel) for macOS 14 or later.
+
+## Getting started
+
+1. Open Harbor and click **+ New profile**. Give it a name (e.g. "Work") and a color.
+2. Click the profile, then **Show window** (or double-click it on the map). Sign in
+   to that Claude account — Harbor remembers it from then on.
+3. Repeat for each account. Harbor shows a short walkthrough the first time it
+   opens, and you can bring it back later from Settings → Help.
 
 ## Features
 - Create, rename, recolor, reorder and delete profiles (one per Claude account)
